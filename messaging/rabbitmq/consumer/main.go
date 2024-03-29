@@ -13,7 +13,7 @@ func InitConsumer() error {
 	connOpts := rabbitmq.ConnectionOptions{
 		URL:      "amqp://guest:guest@localhost:5672",
 		Exchange: "auth",
-		Queue:    "user_creation",
+		Queue:    "create-user",
 	}
 
 	consumer, err := rabbitmq.NewConsumer(connOpts)
