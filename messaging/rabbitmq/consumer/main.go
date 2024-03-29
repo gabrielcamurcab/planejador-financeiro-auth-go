@@ -11,7 +11,7 @@ import (
 
 func InitConsumer() error {
 	connOpts := rabbitmq.ConnectionOptions{
-		URL:      "amqp://guest:guest@localhost:5672",
+		URL:      "amqp://guest:guest@rabbitmq:5672",
 		Exchange: "auth",
 		Queue:    "create-user",
 	}
