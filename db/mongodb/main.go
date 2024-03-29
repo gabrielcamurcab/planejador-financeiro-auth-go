@@ -19,11 +19,10 @@ func Connect() (*mongo.Client, error) {
 	}
 
 	mongoURL := os.Getenv("MONGO_URL")
-	dbName := os.Getenv("MONGO_DB")
 	username := os.Getenv("MONGO_USER")
 	password := os.Getenv("MONGO_PASS")
 
-	client, err := connectToMongoDB(mongoURL, dbName, username, password)
+	client, err := connectToMongoDB(mongoURL, username, password)
 	if err != nil {
 		return nil, fmt.Errorf("error connecting to MongoDB: %v", err)
 	}
@@ -33,7 +32,7 @@ func Connect() (*mongo.Client, error) {
 	return client, nil
 }
 
-func connectToMongoDB(url, dbName, username, password string) (*mongo.Client, error) {
+func connectToMongoDB(url, username, password string) (*mongo.Client, error) {
 	clientOptions := options.Client().ApplyURI(url).SetAuth(options.Credential{
 		Username: username,
 		Password: password,
